@@ -107,6 +107,27 @@ class influence_unlearn(nn.Module):
         unlearn_loss = unlearn_loss_fun_nochange(u_para, i_para)
         unlearn_grad = torch.autograd.grad(unlearn_loss, un_ui_para,retain_graph=True)[0].reshape(-1,1)
 
+        ## scif
+        label_path = 'Data/Process/Amazon/0.01/avg_labels.npy'
+        avg_labels = np.load(label_path)
+        avg_labels = torch.from_numpy(avg_labels).cuda()
+        
+        def unlearn_loss_fun_avg(para1, para2):
+            u_para, i_para = para1, para2
+            unlearned_data = data_generator.train_random.values
+            unlearned_data = torch.from_numpy(unlearned_data).cuda()
+            user_embs = u_para[unlearned_data[:,0].long()]
+            item_embs = i_para[unlearned_data[:,1].long()]
+            scores = torch.mul(user_embs,item_embs).sum(dim=-1)
+            bce_loss = F.binary_cross_entropy_with_logits(scores, avg_labels.float(), reduction='sum')
+            return bce_loss
+        
+        unlearn_loss_avg = unlearn_loss_fun_avg(u_para, i_para)
+        unlearn_grad_avg = torch.autograd.grad(unlearn_loss_avg, un_ui_para,retain_graph=True)[0].reshape(-1,1)
+
+        ## update
+        unlearn_grad = unlearn_grad - unlearn_grad_avg + total_grad * len(data_generator.train[['user','item','label']].values)
+
         def hvp(grad, vec):
             vec = vec.detach()
             prod = torch.mul(vec, grad).sum()
