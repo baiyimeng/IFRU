@@ -222,7 +222,7 @@ def main(config_args):
     config['n_users'] = data_generator.n_users
     config['n_items'] = data_generator.n_items
 
-    save_name = './Weights/LightGCN/LightGCN_lr-0.0001-embed_size-32-batch_size-2048-data_type-full-dataset-Amazon-attack-0.01-seed-1024-init_std-0.0001-m.pth'
+    save_name = './Weights/LightGCN/LightGCN_lr-0.0001-embed_size-32-batch_size-2048-data_type-full-dataset-BookCrossing-attack-0.01-seed-1024-init_std-0.0001-m.pth'
     model = LightGCN(args, dataset=data_generator).cuda()
     model.load_state_dict(torch.load(save_name))
 
