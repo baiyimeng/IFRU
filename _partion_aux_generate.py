@@ -4,7 +4,7 @@ import pickle
 from Model.MF import MF
 from utility.load_data import *
 
-load_path = '/home/baiyimeng/2023/IFRU_copy/Weights/MF/MF_lr-0.001-embed_size-48-batch_size-2048-data_type-full-dataset-BookCrossing-attack-0.02-seed-1024-init_std-0.001-m.pth'
+load_path = './Weights/MF/MF_lr-0.001-embed_size-48-batch_size-2048-data_type-full-dataset-BookCrossing-attack-0.02-seed-1024-init_std-0.001-m.pth'
 data_path = './Data/Process/'
 dataset = 'BookCrossing'  # 'Amazon'
 attack = '0.02'  # '0.01'
