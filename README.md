@@ -1,7 +1,7 @@
 # IFRU
 [![arXiv](https://img.shields.io/badge/arXiv-2307.02147-red.svg)](https://arxiv.org/abs/2307.02147)
 
-This is the PyTorch implementation of our paper published in *ACM Transactions on Recommender Systems (ACM TORS)*:
+This is the PyTorch implementation of our paper published in ACM Transactions on Recommender Systems (ACM TORS):
 
 > **[Recommendation Unlearning via Influence Function](https://arxiv.org/abs/2307.02147)**  
 > Yang Zhang, Zhiyu Hu, Yimeng Bai, Jiancan Wu, Qifan Wang, Fuli Feng
