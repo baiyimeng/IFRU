@@ -4,7 +4,7 @@
 This is the PyTorch implementation of our paper published in ACM Transactions on Recommender Systems (ACM TORS):
 
 > **[Recommendation Unlearning via Influence Function](https://arxiv.org/abs/2307.02147)**  
-> Yang Zhang, Zhiyu Hu, Yimeng Bai, Jiancan Wu, Qifan Wang, Fuli Feng
+> Yang Zhang, Zhiyu Hu, Yimeng Bai, Jiancan Wu, Qifan Wang, Fuli Feng.
 
 ## Usage
 
